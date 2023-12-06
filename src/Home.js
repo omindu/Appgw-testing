@@ -2,7 +2,7 @@ import React from 'react';
 import { useRownd } from "@rownd/react";
 
 function Home() {
-  const { is_authenticated, user, requestSignIn, getAccessToken } = useRownd();
+  const { is_authenticated, user, requestSignIn, getAccessToken, signOut } = useRownd();
   const [token, setToken] = React.useState(null);
 
   const getToken = async () => {
@@ -15,6 +15,7 @@ function Home() {
       {is_authenticated ? (
         <div>
           <h1>Welcome {user.data.full_name}</h1>
+          <button onClick={() => signOut()}>Logout</button>
           <button onClick={getToken}>Get access token</button>
           <div>
             <pre>{token}</pre>
