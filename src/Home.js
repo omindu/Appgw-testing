@@ -12,19 +12,25 @@ function Home() {
 
   return (
     <div>
-      {is_authenticated ? (
+      {!is_authenticated ? (
+        
         <div>
+          <h1>Please sign in to continue</h1>
+          {/* Login Button */}
+          <button onClick={() => requestSignIn()}>Login</button>
+        </div>
+      ) : (
+        <div>
+          {/* Get user info */}
           <h1>Welcome {user.data.full_name}</h1>
-          <button onClick={() => signOut()}>Logout</button>
+
+          {/* Get user Access token*/}
           <button onClick={getToken}>Get access token</button>
           <div>
             <pre>{token}</pre>
           </div>
-        </div>
-      ) : (
-        <div>
-          <h1>Please sign in to continue</h1>
-          <button onClick={() => requestSignIn()}>Login</button>
+
+          <button onClick={() => signOut()}>Logout</button>
         </div>
       )}
     </div>
