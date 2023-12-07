@@ -5,6 +5,7 @@ import { useAuth, useLoginWithRedirect, ContextHolder } from "@frontegg/react";
 function Home() {
   const { user, isAuthenticated } = useAuth();
   const loginWithRedirect = useLoginWithRedirect();
+  const [token, setToken] = React.useState(null);
 
   const logout = () => {
     const baseUrl = ContextHolder.getContext().baseUrl;
@@ -13,19 +14,27 @@ function Home() {
 
   return (
     <div>
-      {isAuthenticated ? (
+      {!isAuthenticated ? (
         <div>
-          <p>Welcome {user?.name}</p>
-          <div>
-            <pre>{user.accessToken}</pre>
-          </div>
-          <div>
-            <button onClick={() => logout()}>Logout</button>
-          </div>
+          <h1>Please sign in to continue</h1>
+          {/* Login Button */}
+          <button onClick={() => loginWithRedirect()}>Login</button>
         </div>
       ) : (
         <div>
-          <button onClick={() => loginWithRedirect()}>Login</button>
+          {/* Get user info */}
+          <p>Welcome {user?.name}</p>
+
+          {/* Get user Access token*/}
+          <button onClick={() => setToken(user.accessToken)}>Get access token</button>
+          <div>
+            <pre>{token}</pre>
+          </div>
+          
+          {/* Logout Button */}
+          <div>
+            <button onClick={() => logout()}>Logout</button>
+          </div>
         </div>
       )}
     </div>
