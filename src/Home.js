@@ -33,10 +33,14 @@ function Home() {
       {!isUserLoading && isAuthenticated &&
         (
           <>
+            {/* Get user info */}
             <h1>Welcome {user.name}</h1>
             
+            {/* Get user Access token*/}
             <button onClick={() => getAccessToken()}>Get Access Token</button>
             <pre>{accessToken}</pre>
+              
+            {/* Logout */}
             <button onClick={() => logout()}>Logout</button>
           </>
         )
