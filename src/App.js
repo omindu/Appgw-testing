@@ -26,12 +26,20 @@ function App() {
   return (
     <div className="App">
       {
-        userInfo ? <div>
-          <h1>Welcome {userInfo.first_name}</h1>
-          <button onClick={handleLogout}>Log Out</button>
-        </div> :
+        userInfo ? (
+          <div>
+            {/* Get user info */}
+            <p>Welcome {userInfo.first_name}</p>
+
+            {/* Logout Button */}
+            <button onClick={handleLogout}>Logout</button>
+          </div> ): (
+          <div>
+           <h1>Please sign in to continue</h1> 
+           {/* Login Button */}
           <button onClick={() => { window.location.href = "/auth/login" }}>Login</button>
-      }
+          </div>
+        )}   
     </div>
   );
 }
