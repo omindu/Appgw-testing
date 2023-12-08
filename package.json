@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@clerk/clerk-react": "^4.28.2",
     "@descope/react-sdk": "^2.0.3",
     "@frontegg/react": "^6.0.12",
     "@kinde-oss/kinde-auth-react": "^3.0.23",

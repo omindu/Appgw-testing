@@ -3,20 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { FronteggProvider } from '@frontegg/react';
-import { BrowserRouter } from "react-router-dom";
+import {ClerkProvider} from "@clerk/clerk-react";
 
-const contextOptions = {
-  baseUrl: process.env.REACT_APP_FRONTEGG_BASE_URL,
-  clientId: process.env.REACT_APP_FRONTEGG_CLIENT_ID
-};
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const clerkPubKey = process.env.REACT_APP_CLERK_CLIENT_ID;
 root.render(
   <React.StrictMode>
-    <FronteggProvider contextOptions={contextOptions}
-      hostedLoginBox={true}>
+    <ClerkProvider publishableKey={clerkPubKey}>
       <App />
-    </FronteggProvider>
+    </ClerkProvider>  
   </React.StrictMode>
 );
 
